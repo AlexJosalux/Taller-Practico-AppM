@@ -27,6 +27,12 @@ textRedirect:{
     fontWeight:"bold",
     textAlign:"center",
     textDecorationLine:"underline"
+},
+containerActivity:{
+    flex:1,
+    justifyContent: "center",
+    alignItems: "center",
+
 }
 
 });
