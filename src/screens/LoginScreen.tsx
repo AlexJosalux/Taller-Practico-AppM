@@ -1,8 +1,8 @@
 // src/screens/LoginScreen.tsx
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import {Button,Snackbar,Text,TextInput,useTheme} from 'react-native-paper';
-import { styles } from '../theme/appStyles';
+import { styles } from '../theme/appStyles'; // Usará el archivo appStyles.ts actualizado
 import { auth } from '../configs/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
@@ -18,7 +18,7 @@ interface Message {
   text: string;
   color: string;
 }
-
+const logoImage = require('../../assets/preg.png'); 
 export const LoginScreen = () => {
   const navigation = useNavigation();
   const { colors } = useTheme();
@@ -49,12 +49,23 @@ export const LoginScreen = () => {
 
     try {
       await signInWithEmailAndPassword(auth, formLogin.email, formLogin.password);
-      setShowMessage({
-        visible: true,
-        text: '¡Bienvenido! Inicio de sesión exitoso',
-        color: '#4caf50', // Verde
-      });
+      
+      // Añadida navegación para ir a la pantalla principal (asumida como 'Home')
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: 'Home' as never }], // Redirige a la pantalla principal
+        })
+      );
+
+      // Mostrar mensaje de bienvenida SOLO si no hay una redirección inmediata que lo oculte
+      // setShowMessage({
+      //   visible: true,
+      //   text: '¡Bienvenido! Inicio de sesión exitoso',
+      //   color: '#4caf50', // Verde
+      // });
       setFormLogin({ email: '', password: '' });
+
     } catch (error: any) {
       let msg = 'Correo o contraseña incorrectos';
       if (error.code === 'auth/user-not-found') {
@@ -73,7 +84,8 @@ export const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Text style={styles.text}>🔢 Adivina el Número</Text>
+        <Image source={logoImage} style={localStyles.logoImage} />
+        <Text style={styles.text}>Adivina el Número</Text> 
         <Text style={styles.subtitle}>Inicia sesión para jugar</Text>
       </View>
 
@@ -133,4 +145,13 @@ export const LoginScreen = () => {
       </Snackbar>
     </View>
   );
+  
 };
+const localStyles = StyleSheet.create({
+  logoImage: {
+    width: 100, 
+    height: 100, 
+    resizeMode: 'contain',
+    marginBottom: 15, 
+  },
+});

@@ -8,12 +8,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBQapL02bE7CfHb0u72m_LEE2J1HYYkJjw",
-  authDomain: "juego-42724.firebaseapp.com",
-  projectId: "juego-42724",
-  storageBucket: "juego-42724.firebasestorage.app",
-  messagingSenderId: "713910653128",
-  appId: "1:713910653128:web:27447fc854f12d1e0395fd"
+  apiKey: "AIzaSyCBXVB1g70mA7sUKSWSK7KJGxhjdJoIvNw",
+  authDomain: "mensajeriaapp-7b24c.firebaseapp.com",
+  projectId: "mensajeriaapp-7b24c",
+  storageBucket: "mensajeriaapp-7b24c.firebasestorage.app",
+  messagingSenderId: "142569696636",
+  appId: "1:142569696636:web:f800a711a2da15f0a848f9"
 };
 
 // Initialize Firebase
