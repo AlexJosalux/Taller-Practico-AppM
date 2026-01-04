@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import {Button,Snackbar,Text,TextInput,useTheme} from 'react-native-paper';
-import { styles } from '../theme/appStyles'; // Usará el archivo appStyles.ts actualizado
+import { styles } from '../theme/appStyles';
 import { auth } from '../configs/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
@@ -58,9 +58,6 @@ export const LoginScreen = () => {
         })
       );
 
-      // Mostrar mensaje de bienvenida SOLO si no hay una redirección inmediata que lo oculte
-      // setShowMessage({
-      //   visible: true,
       //   text: '¡Bienvenido! Inicio de sesión exitoso',
       //   color: '#4caf50', // Verde
       // });

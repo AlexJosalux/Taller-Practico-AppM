@@ -1,23 +1,30 @@
 import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// 1. IMPORTA estas funciones necesarias
+import { getDatabase } from "firebase/database"; 
+import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCBXVB1g70mA7sUKSWSK7KJGxhjdJoIvNw",
-  authDomain: "mensajeriaapp-7b24c.firebaseapp.com",
-  projectId: "mensajeriaapp-7b24c",
-  storageBucket: "mensajeriaapp-7b24c.firebasestorage.app",
-  messagingSenderId: "142569696636",
-  appId: "1:142569696636:web:f800a711a2da15f0a848f9"
+  apiKey: "AIzaSyAceJDCQ_69GVNDlXqR5XqljKAhRiDQoKg",
+  authDomain: "juegoaa.firebaseapp.com",
+  projectId: "juegoaa",
+  storageBucket: "juegoaa.firebasestorage.app",
+  messagingSenderId: "1077881363094",
+  appId: "1:1077881363094:web:174f4c83bc34246f00c0b7",
+  measurementId: "G-0QK0SKE1M1"
 };
 
 // Initialize Firebase
-const firebase = initializeApp(firebaseConfig);
-export const auth = initializeAuth(firebase, {
+const app = initializeApp(firebaseConfig);
+
+// 2. EXPORTA 'auth' correctamente
+export const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
+
+// 3. EXPORTA 'dbRealtime' (Esto quita el error de tu imagen)
+export const dbRealtime = getDatabase(app);
+
+// 4. EXPORTA 'storage' (También lo estás usando en HomeScreen)
+export const storage = getStorage(app);

@@ -84,4 +84,65 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 20,
     },
+    fab: {
+        position: 'absolute',
+        bottom: 30,
+        right: 30
+    },
+    iconSingOut: {
+        marginTop: 25,
+        alignItems: 'center'
+    },
+    containerIcons:{
+        flexDirection: 'row',
+        marginTop: 10
+    },
+    containerImage: {
+        alignItems: 'center',
+        marginVertical: 15
+    },
+    icon: {
+        alignItems: 'flex-end',
+        flex: 1
+    },
+     headerModal: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    containerHome: {
+        flex: 1,
+        marginHorizontal: 20,
+        marginVertical: 50
+    },
+    headerHome: {
+        flexDirection: 'row',
+        gap: 15,
+        alignItems: 'center'
+    },
+    textMessage: {
+        fontWeight: 'bold',
+        fontSize: 18
+
+    },
+    inputMessage: {
+        height: 150,
+    },
+     containerDetail: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: 'white',
+        gap: 20
+    },
+     modal: {
+        backgroundColor: 'white',
+        padding: 20,
+        marginHorizontal: 20,
+        borderRadius: 10,
+        gap: 7
+    },
+    containerMessage: {
+        padding: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
 });

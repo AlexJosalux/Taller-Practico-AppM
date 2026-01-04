@@ -1,13 +1,14 @@
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import { LoginScreen } from '../screens/LoginScreen';
 import { RegisterScreen } from '../screens/RegisterScreen';
-import {JuegoScreen} from '../screens/JuegoScreen';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from '@firebase/auth';
 import { auth } from '../configs/firebaseConfig';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import { View } from 'react-native';
 import { styles } from '../theme/appStyles';
+import { HomeScreen } from '../screens/HomeScreen';
+import { DetailMessageScreen } from '../screens/DetailMessageScreen';
 
 const Stack = createStackNavigator();
 
@@ -36,24 +37,15 @@ export const StackNavigator = () => {
             {
                 isLoading ? (
                     <View style={styles.containerActivity}>
-                        <ActivityIndicator size={30}/>
+                        <ActivityIndicator size={30} />
                     </View>
                 )
                     : (
-                        <Stack.Navigator>
-
-                            {
-                                !isAuth ?
-                                    <>
-                                        <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
-                                        <Stack.Screen name='Register' options={{ headerShown: false }} component={RegisterScreen} />
-                                    </>
-                                    :
-                                    <Stack.Screen name='Juego' options={{ headerShown: false }} component={JuegoScreen} />
-                            }
-
-
-
+                        <Stack.Navigator initialRouteName={isAuth ? 'Home' : 'Login'}>
+                            <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
+                            <Stack.Screen name='Register' options={{ headerShown: false }} component={RegisterScreen} />
+                            <Stack.Screen name='Home' options={{ headerShown: false }} component={HomeScreen} />
+                            <Stack.Screen name='Detail' options={{ title: "Detalle Mensaje" }} component={DetailMessageScreen} />                            
                         </Stack.Navigator>
                     )
             }
